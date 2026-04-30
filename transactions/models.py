@@ -22,17 +22,17 @@ TYPE = [
 ]
 
 class Transaction(Document):
-    userId = ReferenceField(User, required=True)
+    user = ReferenceField(User, required=True)
 
     title = StringField(required=True)
     amount = FloatField(required=True)
     type = StringField(required=True, choices=TYPE, default='expense')
     category = StringField(required=True, choices=CATEGORIES, default='other')
-    date = DateTimeField(default=datetime.now())
-    createdAt = DateTimeField(default=datetime.now())
-    updatedAt = DateTimeField(default=datetime.now())
+    date = DateTimeField(default=datetime.now)
+    createdAt = DateTimeField(default=datetime.now)
+    updatedAt = DateTimeField(default=datetime.now)
 
     meta = {
         "collection": "transactions",
-        "indexes": ["userId"]
+        "indexes": ["user"]
     }
